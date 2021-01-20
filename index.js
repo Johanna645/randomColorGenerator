@@ -1,9 +1,12 @@
 const randomColor = require('randomcolor'); // import the script
 
+const chalk = require('chalk'); // library for the colouring of the texts
+
 console.log(process.argv[2]);
 const input = process.argv[2];
-let color = randomColor({ hue: input });
+const color = randomColor({ hue: input });
 console.log(color);
+
 function drawLongLine() {
   let longStringOfHashtags = '';
   let i = 0;
@@ -39,6 +42,10 @@ function drawSpecialLine() {
     } else if (b >= 5 || b < 12 || b >= 19 || b < 26) {
       specialString = specialString + ' ';
     } else {
+      for (let i = 0; i < color.length; i++) {
+        const character = color[i];
+        specialString = specialString + character;
+      }
       // how do i get the color here? character at a time, string length color [0]
     }
     b++;
@@ -56,4 +63,3 @@ drawShortLine();
 drawLongLine();
 drawLongLine();
 drawLongLine();
-// const userInput = process.argv[2];
