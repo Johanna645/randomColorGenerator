@@ -15,7 +15,7 @@ function drawLongLine() {
     i++;
   } while (i < 31);
 
-  console.log(longStringOfHashtags);
+  console.log(chalk.hex(color)(longStringOfHashtags));
 }
 
 function drawShortLine() {
@@ -30,26 +30,26 @@ function drawShortLine() {
     a++;
   } while (a < 31);
 
-  console.log(shortStringOfHashtags);
+  console.log(chalk.hex(color)(shortStringOfHashtags));
 }
 
-function drawSpecialLine() {
-  let specialString = '';
-  let b = 0;
-  do {
-    if (b < 5 || b >= 26) {
-      specialString = specialString + '#';
-    } else if (b >= 5 || b < 12 || b >= 19 || b < 26) {
-      specialString = specialString + ' ';
-    } else {
-      for (let i = 0; i < color.length; i++) {
-        const character = color[i];
-        specialString = specialString + character;
-      }
-      // how do i get the color here? character at a time, string length color [0]
-    }
-    b++;
-  } while (b < 31);
+function drawLineWithColor(color) {
+  let stringWithColor = '';
+  let stringWithHashtag = '';
+  let stringEmpty = '';
+
+  for (let i = 0; i < 5; i++) {
+    stringWithHashtag = stringWithHashtag + '#';
+  }
+
+  for (let i = 0; i <= 6; i++) {
+    stringEmpty = stringEmpty + ' ';
+  }
+
+  stringWithColor =
+    stringWithHashtag + stringEmpty + color + stringEmpty + stringWithHashtag;
+
+  console.log(chalk.hex(color)(stringWithColor));
 }
 
 drawLongLine();
@@ -57,7 +57,7 @@ drawLongLine();
 drawLongLine();
 drawShortLine();
 
-drawSpecialLine();
+drawLineWithColor(color);
 
 drawShortLine();
 drawLongLine();
