@@ -33,7 +33,7 @@ function drawShortLine() {
   console.log(chalk.hex(color)(shortStringOfHashtags));
 }
 
-function drawLineWithColor(color) {
+function drawLineWithColor() {
   let stringWithColor = '';
   let stringWithHashtag = '';
   let stringEmpty = '';
